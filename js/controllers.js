@@ -108,7 +108,7 @@
     function asideCtrl ($timeout) {
         var aside = this;
 
-        aside.clock = "Cargado fecha y hora ...";
+        aside.clock = "Cargando fecha y hora ...";
         aside.tickInterval = 1000;
 
         var tick = function() {

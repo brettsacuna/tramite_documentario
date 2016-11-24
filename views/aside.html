@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand" ui-sref="app.panel"><img src="https://angular.io/resources/images/logos/angular2/angular.svg" style="display: inline-block !important; margin-top: -10px" alt="logo" width="30" />&nbsp;<span style="margin-top: 15px">SISTRAMDOC</span></a>
         </div>
-        <ul class="nav navbar-top-links navbar-right" ng-if="aside.clock">
+        <ul class="nav navbar-top-links navbar-right" ng-if="aside.clock != 'Cargando fecha y hora ...'">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-time"></i>&nbsp;<b>Fecha : </b>{{aside.clock  | date:'EEEE dd '}}de{{aside.clock  | date:' LLLL '}}del{{aside.clock  | date:' yyyy '}} | <b>Hora : </b> {{aside.clock | date:'hh:mm:ss a'}}
