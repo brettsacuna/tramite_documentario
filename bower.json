@@ -1,0 +1,30 @@
+{
+  "name": "tramite_documentario",
+  "description": "aplicación para la gestión de documentos",
+  "main": "gulpfile.js",
+  "authors": [
+    "DAVIS BRETTS ACUÑA CORDOVA"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "tramite",
+    "documentario"
+  ],
+  "homepage": ".",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^2.2.0",
+    "underscore": "^1.8.3",
+    "metisMenu": "^2.5.2",
+    "angular-ui-router": "^0.3.2",
+    "oclazyload": "^1.0.9"
+  }
+}

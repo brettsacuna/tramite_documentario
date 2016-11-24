@@ -1,0 +1,84 @@
+<div class="modal-header">
+    <h3 class="modal-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;Nuevo documento</h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="tipo_documento">Tipo documento : </label>
+                <select class="form-control" name="tipo_documento" id="tipo_documento" ng-model="nuevo_documento.tipo_documento">
+                    <option value="">NO INDICA</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="numero_documento">N° documento : </label>
+                <input type="text" class="form-control" name="numero_documento" id="numero_documento" placeholder="N° documento" ng-model="nuevo_documento.numero_documento" ng-disabled="!nuevo_documento.tipo_documento">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="hasta">Fecha documento : </label>
+                <p class="input-group">
+                    <input type="text" class="form-control text-center" readonly uib-datepicker-popup="dd/MM/yyyy" ng-model="nuevo_documento.fecha_documento" is-open="nuevo_documento.fecha_documento_seleccionado" current-text="Hoy" clear-text="Limpiar" close-text="Cerrar" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-danger" ng-click="nuevo_documento.abrir_calendario()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+	</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="destino">Destino : </label>
+                <select class="form-control" name="destino" id="destino" ng-model="nuevo_documento.destino">
+                    <option value="">NO INDICA</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="unidad_origen"><input type="checkbox" name="indica_unidad_origen" id="indica_unidad_origen" ng-model="nuevo_documento.indica_unidad_origen">&nbsp;Unidad de origen : </label>
+                <input type="text" class="form-control" name="unidad_origen" id="unidad_origen" ng-model="nuevo_documento.unidad_origen" placeholder="Ingresar unidad de origen" ng-disabled="!nuevo_documento.indica_unidad_origen">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="clasificacion">Clasificación : </label>
+                <select class="form-control" name="clasificacion" id="clasificacion" ng-model="nuevo_documento.clasificacion">
+                    <option value="">NO INDICA</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="asunto">Asunto : </label>
+                <textarea class="form-control" rows="3" ng-model="nuevo_documento.asunto" placeholder="Ingrese asunto"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="adjunto">Adjunto : </label>
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn btn-primary btn-file">
+                            Seleccionar archivo <input type="file" name="adjunto" id="adjunto" ng-model="nuevo_documento.adjunto">
+                        </span>
+                    </label>
+                    <input type="text" class="form-control" readonly ng-value="nuevo_documento.adjunto ? nuevo_documento.adjunto : 'No se ha seleccionado ningún archivo'">
+                </div>
+                <p class="help-block">Adjuntar archivo de sustento</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" type="button" ng-click="nuevo_documento.cerrar()"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;Cerrar</button>
+    <button type="button" class="btn btn-primary" ng-click="nuevo_documento.guardar_documento()"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;Guardar documento</button>
+</div>

@@ -1,0 +1,121 @@
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <i class="glyphicon glyphicon-list-alt"></i>&nbsp;Listado de documentos
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="tipo_busqueda">Tipo : </label>
+                        <select class="form-control" name="tipo_busqueda" id="tipo_busqueda" ng-model="panel.tipo_busqueda">
+                            <option value="0">N° Registro</option>
+                            <option value="1">Unidad origen</option>
+                            <option value="2">Tipo documento</option>
+                            <option value="3">Fecha documento</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4" ng-if="panel.tipo_busqueda == 0">
+                    <div class="form-group">
+                        <label for="numero_registro">Número de registro : </label>
+                        <input type="text" class="form-control" name="numero_registro" id="numero_registro" placeholder="Ingrese número de registro" ng-model="panel.numero_registro">
+                    </div>
+                </div>
+                <div class="col-md-4" ng-if="panel.tipo_busqueda == 1">
+                    <div class="form-group">
+                        <label for="unidad_origen">Unidad de origen : </label>
+                        <select class="form-control" name="unidad_origen" id="unidad_origen" ng-model="panel.unidad_origen">
+                            <option value="">[ Unidad de origen ]</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4" ng-if="panel.tipo_busqueda == 2">
+                    <div class="form-group">
+                        <label for="tipo_documento">Tipo de documento : </label>
+                        <select class="form-control" name="tipo_documento" id="tipo_documento" ng-model="panel.tipo_documento">
+                            <option value="">[ Tipo de documento ]</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="panel.tipo_busqueda == 3">
+                    <div class="form-group">
+                        <label for="desde">Desde : </label>
+                        <p class="input-group">
+                            <input type="text" class="form-control text-center" readonly uib-datepicker-popup="dd/MM/yyyy" ng-model="panel.desde" is-open="panel.desde_seleccionado" current-text="Hoy" clear-text="Limpiar" close-text="Cerrar" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" ng-click="panel.abrir_calendario('desde')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="panel.tipo_busqueda == 3">
+                    <div class="form-group">
+                        <label for="hasta">Hasta : </label>
+                        <p class="input-group">
+                            <input type="text" class="form-control text-center" readonly uib-datepicker-popup="dd/MM/yyyy" ng-model="panel.hasta" is-open="panel.hasta_seleccionado" current-text="Hoy" clear-text="Limpiar" close-text="Cerrar" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-danger" ng-click="panel.abrir_calendario('hasta')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="busqueda_accion">&nbsp;</label>
+                        <button type="button" class="btn btn-warning btn-block" name="busqueda_accion" id="busqueda_accion" ng-disabled="panel.tipo_busqueda == 0 ? !panel.numero_registro : (panel.tipo_busqueda == 1 ? !panel.unidad_origen : (panel.tipo_busqueda == 2 ? !panel.tipo_documento : false))">Búsqueda&nbsp;<i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="nuevo_documento">&nbsp;</label>
+                        <button type="button" class="btn btn-success btn-block" name="nuevo_documento" id="nuevo_documento" ng-click="panel.nuevo_documento()">Nuevo documento&nbsp;<i class="glyphicon glyphicon-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <caption>Listado de documentos</caption>
+                        <thead>
+                            <tr>
+                                <th class="text-center">Registro</th>
+                                <th class="text-center">Documento</th>
+                                <th class="text-center">Número</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Destino</th>
+                                <th class="text-center">Asunto</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td class="text-center">000021222</td>
+                            <td class="text-center">SOLICITUD</td>
+                            <td class="text-center">023</td>
+                            <td class="text-center">22/22/2222</td>
+                            <td class="text-center">NO INDICA</td>
+                            <td>SOLICITO DOCUMENTOS</td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-danger dropdown-toggle" type="button" id="row_actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <i class="glyphicon glyphicon-file"></i>&nbsp;Documento
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="row_actions">
+                                        <li><a href="#"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                        <li><a ng-click="panel.ingresar_decretos()"><i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp;Decretos</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Estado</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;Visualizar</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <h5 class="text-center">Gestión de documentos</h5>
+        </div>
+    </div>
+</div>
