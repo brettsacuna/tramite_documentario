@@ -4,6 +4,7 @@
     angular
         .module('tramiteApp.controllers', [])
         .controller('panelCtrl', panelCtrl)
+        .controller('asideCtrl', asideCtrl)
         .controller('inicioSesionCtrl', inicioSesionCtrl)
         .controller('pendientesCtrl', pendientesCtrl)
         .controller('nuevoDocumentoCtrlPrtl', nuevoDocumentoCtrlPrtl)
@@ -102,6 +103,20 @@
 				console.log('Modal dismissed at: ' + new Date());
 			});
         };
+    }
+
+    function asideCtrl ($timeout) {
+        var aside = this;
+
+        aside.clock = "Cargado fecha y hora ...";
+        aside.tickInterval = 1000;
+
+        var tick = function() {
+            aside.clock = Date.now();
+            $timeout(tick, aside.tickInterval);
+        };
+
+        $timeout(tick, aside.tickInterval);
     }
 
     function inicioSesionCtrl () {

@@ -38,3 +38,50 @@ body {
 .login-panel {
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
 }
+
+.userView {
+    position: relative;
+    padding: 32px;
+}
+
+.userView .background {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.userView > a {
+    height: auto;
+    padding: 0;
+    display: block;
+}
+
+.circle {
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+.userView .name, .userView .email {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.white-text {
+    color: #fff !important;
+}
+
+.sidebar ul li a.active {
+    background-color: #1565c0 !important;
+    color: white;
+    font-weight: bold;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

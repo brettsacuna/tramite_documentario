@@ -29,7 +29,8 @@
 						templateUrl: './views/layout.html'
 					},
                     'aside@': {
-						templateUrl: './views/aside.html'
+						templateUrl: './views/aside.html',
+                        controller: 'asideCtrl as aside'
 					},
 					'content@': {
 						templateUrl: './views/content.html'
