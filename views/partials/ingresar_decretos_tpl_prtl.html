@@ -2,7 +2,126 @@
     <h3 class="modal-title"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Decretos</h3>
 </div>
 <div class="modal-body">
-
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default" ng-class="'chat-panel' : ingresar_decretos.decretos.length > 5">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-list"></i>&nbsp;Decretos
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-refresh"></i> Refrescar lista
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix">
+                            <span class="chat-img pull-left">
+                                <div class="avatar warning"><i class="fa fa-bandcamp"></i></div>
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Sección : </strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> 22/02/2017
+                                    </small>
+                                </div>
+                                <p>G - 1</p>
+                                <p>
+                                    <a role="button"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <select class="form-control input-sm" name="decreto" id="decreto" ng-model="ingresar_decretos.decreto">
+                            <option value="">[ Sección ]</option>
+                        </select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm">Agregar&nbsp;<i class="glyphicon glyphicon-plus"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default" ng-class="'chat-panel' : ingresar_decretos.disposiciones.length > 5">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-list-alt"></i>&nbsp;Disposiciones
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-refresh"></i> Refrescar lista
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix">
+                            <span class="chat-img pull-left">
+                                <div class="avatar" style="background-color: #337ab7"><i class="fa fa-check"></i></div>
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Disposición : </strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> 22/02/2017
+                                    </small>
+                                </div>
+                                <p>DAR CUENTA AL SUSCRITO</p>
+                                <p>
+                                    <a role="button"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <select class="form-control input-sm" name="decreto" id="decreto" ng-model="ingresar_decretos.decreto">
+                            <option value="">[ Disposición ]</option>
+                        </select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm">Agregar&nbsp;<i class="glyphicon glyphicon-plus"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="accion">Acción : </label>
+                <select class="form-control" name="accion" id="accion" ng-model="ingresar_decretos.accion">
+                    <option value="">[ Acción ]</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="observacion">Observación : </label>
+                <textarea class="form-control" rows="3" ng-model="ingresar_decretos.observacion" placeholder="Ingrese observacion"></textarea>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-danger" type="button" ng-click="ingresar_decretos.cerrar()"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;Cerrar</button>

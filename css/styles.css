@@ -21,3 +21,16 @@ body {
     cursor: inherit;
     display: block;
 }
+
+.avatar {
+    z-index: 100;
+    top: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50% 50% 50% 50%;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 50px;
+    color: #fff;
+    background-color: #d9534f;
+}
