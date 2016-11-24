@@ -22,6 +22,11 @@ var lib = require('bower-files')({
           "dist/metisMenu.css",
           "dist/metisMenu.js",
         ]
+      },
+      "angular-confirm" : {
+        "main": [
+          "angular-confirm.js"
+        ]
       }
   }
 });

@@ -5,7 +5,8 @@
         .module('tramiteApp.controllers', [])
         .controller('panelCtrl', panelCtrl)
         .controller('nuevoDocumentoCtrlPrtl', nuevoDocumentoCtrlPrtl)
-        .controller('ingresarDecretosCtrlPrtl', ingresarDecretosCtrlPrtl);
+        .controller('ingresarDecretosCtrlPrtl', ingresarDecretosCtrlPrtl)
+        .controller('messageCtrlPrtl', messageCtrlPrtl);
 
     function panelCtrl ($uibModal) {
         var panel = this;
@@ -77,4 +78,25 @@
             $uibModalInstance.dismiss();
         };
     }
+
+    function messageCtrlPrtl ($uibModalInstance, $sce, message, callback, button) {
+		var alert = this;
+
+		callback = callback || null;
+
+		alert.button = button;
+		alert.message = $sce.trustAsHtml(message);
+
+		alert.close = function () {
+			$uibModalInstance.dismiss();
+		};
+
+		alert.success = function () {
+			$uibModalInstance.close();
+		};
+
+		if(callback){
+			alert.callback = callback;
+		}
+	}
 })();

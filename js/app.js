@@ -2,7 +2,7 @@
     'use-strict';
 
     angular
-        .module('tramiteApp', ['tramiteApp.controllers', 'tramiteApp.services', 'tramiteApp.directives', 'ui.bootstrap', 'ui.router', 'oc.lazyLoad'])
+        .module('tramiteApp', ['tramiteApp.controllers', 'tramiteApp.services', 'tramiteApp.directives', 'ui.bootstrap', 'angular-confirm', 'ui.router', 'oc.lazyLoad'])
         .run(appRun)
         .config(appConfig);
 

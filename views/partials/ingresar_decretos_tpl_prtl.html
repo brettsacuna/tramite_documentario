@@ -1,10 +1,10 @@
 <div class="modal-header">
-    <h3 class="modal-title"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Decretos</h3>
+    <h3 class="modal-title"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Decretos y disposiciones</h3>
 </div>
 <div class="modal-body">
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-default" ng-class="'chat-panel' : ingresar_decretos.decretos.length > 5">
+            <div class="panel panel-default" ng-class="{'chat-panel' : ingresar_decretos.decretos.length > 5}">
                 <div class="panel-heading">
                     <i class="glyphicon glyphicon-list"></i>&nbsp;Decretos
                     <div class="btn-group pull-right">
@@ -35,7 +35,7 @@
                                 </div>
                                 <p>G - 1</p>
                                 <p>
-                                    <a role="button"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
+                                    <a role="button" confirm="¿ Está seguro que desea eliminar el decreto ?"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
                                 </p>
                             </div>
                         </li>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default" ng-class="'chat-panel' : ingresar_decretos.disposiciones.length > 5">
+            <div class="panel panel-default" ng-class="{'chat-panel' : ingresar_decretos.disposiciones.length > 5}">
                 <div class="panel-heading">
                     <i class="glyphicon glyphicon-list-alt"></i>&nbsp;Disposiciones
                     <div class="btn-group pull-right">
@@ -85,7 +85,7 @@
                                 </div>
                                 <p>DAR CUENTA AL SUSCRITO</p>
                                 <p>
-                                    <a role="button"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
+                                    <a role="button" confirm="¿ Está seguro que desea eliminar la disposición ?"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</a>
                                 </p>
                             </div>
                         </li>
