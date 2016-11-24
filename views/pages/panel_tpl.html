@@ -102,10 +102,11 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="row_actions">
-                                        <li><a href="#"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                        <li><a ng-click="panel.editar_documento()"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Editar</a></li>
                                         <li><a ng-click="panel.ingresar_decretos()"><i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp;Decretos</a></li>
-                                        <li><a href="#"><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Estado</a></li>
-                                        <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;Visualizar</a></li>
+                                        <li><a ng-click="panel.ver_estado()"><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Estado</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;Visualizar adjunto</a></li>
+                                        <li><a ng-click="panel.cambiar_adjunto()"><i class="glyphicon glyphicon-cloud-upload"></i>&nbsp;&nbsp;Cambiar adjunto</a></li>
                                     </ul>
                                 </div>
                             </td>

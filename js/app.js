@@ -18,7 +18,7 @@
 		});
 
         $urlRouterProvider
-			.otherwise('/app/panel');
+			.otherwise('/acceso/inicio_sesion');
 
         $stateProvider
 			.state('app', {
@@ -43,16 +43,23 @@
 					data : { title: 'Panel Principal', sub_title: 'Documentos registrados' },
 					controller: 'panelCtrl as panel'
 				})
-            .state('access', {
-    				url: '/access',
-    				template: '<div class="row" ui-view></div>'
+                .state('app.pendientes', {
+					parent: 'app',
+					url: '/pendientes',
+					templateUrl: 'views/pages/pendientes_tpl.html',
+					data : { title: 'Listado de documentos pendientes', sub_title: 'Documentos pendientes' },
+					controller: 'pendientesCtrl as pendientes'
+				})
+            .state('acceso', {
+    				url: '/acceso',
+    				template: '<div class="container" ui-view></div>'
     			})
-    				.state('access.login', {
-    					url: '/login',
-    					templateUrl: 'views/pages/login_tpl.html',
-    					data : { title: 'Log In' },
+    				.state('acceso.inicio_sesion', {
+    					url: '/inicio_sesion',
+    					templateUrl: 'views/pages/inicio_sesion_tpl.html',
+    					data : { title: 'Iniciar sesión' },
     					authenticate: false,
-    					controller: 'loginCtrl as login',
+    					controller: 'inicioSesionCtrl as inicio_sesion',
     				});
     }
 })();

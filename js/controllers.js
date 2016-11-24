@@ -4,8 +4,13 @@
     angular
         .module('tramiteApp.controllers', [])
         .controller('panelCtrl', panelCtrl)
+        .controller('inicioSesionCtrl', inicioSesionCtrl)
+        .controller('pendientesCtrl', pendientesCtrl)
         .controller('nuevoDocumentoCtrlPrtl', nuevoDocumentoCtrlPrtl)
+        .controller('editarDocumentoCtrlPrtl', editarDocumentoCtrlPrtl)
         .controller('ingresarDecretosCtrlPrtl', ingresarDecretosCtrlPrtl)
+        .controller('verEstadoCtrlPrtl', verEstadoCtrlPrtl)
+        .controller('cambiarAdjuntoCtrlPrtl', cambiarAdjuntoCtrlPrtl)
         .controller('messageCtrlPrtl', messageCtrlPrtl);
 
     function panelCtrl ($uibModal) {
@@ -42,6 +47,34 @@
 			});
         };
 
+        panel.editar_documento = function () {
+            var modalEditarDocumento = $uibModal.open({
+				templateUrl: 'views/partials/editar_documento_tpl_prtl.html',
+				controller: 'editarDocumentoCtrlPrtl as editar_documento',
+				size: 'md'
+			});
+
+			modalEditarDocumento.result.then(function (response) {
+				console.log(response);
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
+        };
+
+        panel.cambiar_adjunto = function () {
+            var modalCambiarAdjunto = $uibModal.open({
+				templateUrl: 'views/partials/cambiar_adjunto_tpl_prtl.html',
+				controller: 'cambiarAdjuntoCtrlPrtl as cambiar_adjunto',
+				size: 'sm'
+			});
+
+			modalCambiarAdjunto.result.then(function (response) {
+				console.log(response);
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
+        };
+
         panel.ingresar_decretos = function () {
             var modalIngresarDecretos = $uibModal.open({
 				templateUrl: 'views/partials/ingresar_decretos_tpl_prtl.html',
@@ -55,9 +88,31 @@
 				console.log('Modal dismissed at: ' + new Date());
 			});
         };
+
+        panel.ver_estado = function () {
+            var modalVerEstado = $uibModal.open({
+				templateUrl: 'views/partials/ver_estado_tpl_prtl.html',
+				controller: 'verEstadoCtrlPrtl as ver_estado',
+				size: 'sm'
+			});
+
+			modalVerEstado.result.then(function (response) {
+				console.log(response);
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
+        };
     }
 
-    function nuevoDocumentoCtrlPrtl($uibModalInstance) {
+    function inicioSesionCtrl () {
+        var inicio_sesion = this;
+    }
+
+    function pendientesCtrl () {
+        var pendientes = this;
+    }
+
+    function nuevoDocumentoCtrlPrtl ($uibModalInstance) {
         var nuevo_documento = this;
 
         nuevo_documento.fecha_documento = new Date();
@@ -71,10 +126,40 @@
         };
     }
 
-    function ingresarDecretosCtrlPrtl($uibModalInstance) {
+    function editarDocumentoCtrlPrtl ($uibModalInstance) {
+        var editar_documento = this;
+
+        editar_documento.fecha_documento = new Date();
+
+        editar_documento.cerrar = function () {
+            $uibModalInstance.dismiss();
+        };
+
+        editar_documento.abrir_calendario = function () {
+            editar_documento.fecha_documento_seleccionado = true;
+        };
+    }
+
+    function ingresarDecretosCtrlPrtl ($uibModalInstance) {
         var ingresar_decretos = this;
 
         ingresar_decretos.cerrar = function () {
+            $uibModalInstance.dismiss();
+        };
+    }
+
+    function verEstadoCtrlPrtl ($uibModalInstance) {
+        var ver_estado = this;
+
+        ver_estado.cerrar = function () {
+            $uibModalInstance.dismiss();
+        };
+    }
+
+    function cambiarAdjuntoCtrlPrtl ($uibModalInstance) {
+        var cambiar_adjunto = this;
+
+        cambiar_adjunto.cerrar = function () {
             $uibModalInstance.dismiss();
         };
     }

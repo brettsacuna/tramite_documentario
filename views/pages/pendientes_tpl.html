@@ -1,0 +1,63 @@
+<div class="panel panel-red">
+    <div class="panel-heading">
+        <i class="glyphicon glyphicon-list"></i>&nbsp;Listado de documentos pendientes
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="decreto">Documento decretado a : </label>
+                        <select class="form-control" name="decreto" id="decreto" ng-model="pendientes.decreto">
+                            <option value="">[ Decreto ]</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <caption>Listado de documentos pendientes</caption>
+                        <thead>
+                            <tr>
+                                <th class="text-center">Registro</th>
+                                <th class="text-center">Documento</th>
+                                <th class="text-center">Número</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Destino</th>
+                                <th class="text-center">Asunto</th>
+                                <th class="text-center">Clasificación</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">200002213</td>
+                                <td class="text-center">SOLICITUD</td>
+                                <td class="text-center">023</td>
+                                <td class="text-center">22/02/22</td>
+                                <td class="text-center">G - 6</td>
+                                <td>SOLICITA INTERNET</td>
+                                <td class="text-center">COMUN</td>
+                                <td class="text-center">
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="row_actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="glyphicon glyphicon-pencil"></i>&nbsp;Registro
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="row_actions">
+                                            <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;&nbsp;Visualizar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <h5 class="text-center">Documentos pendientes</h5>
+    </div>
+</div>

@@ -14,7 +14,7 @@
                 <i class="fa fa-user fa-fw"></i>&nbsp;ADMINISTRADOR&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
+                <li><a ui-sref="acceso.inicio_sesion"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
                 </li>
             </ul>
         </li>
@@ -33,7 +33,10 @@
                     </div>
                 </li>
                 <li>
-                    <a ui-sref="app.panel" ui-sref-active="active"><i class="glyphicon glyphicon-list-alt"></i> Panel principal</a>
+                    <a ui-sref="app.panel" ui-sref-active="active"><i class="glyphicon glyphicon-dashboard"></i> Panel principal</a>
+                </li>
+                <li>
+                    <a ui-sref="app.pendientes" ui-sref-active="active"><i class="glyphicon glyphicon-list-alt"></i> Documentos pendientes</a>
                 </li>
             </ul>
         </div>
