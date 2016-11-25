@@ -11,6 +11,7 @@
         .controller('pendientesCtrl', pendientesCtrl)
         .controller('nuevoDocumentoCtrlPrtl', nuevoDocumentoCtrlPrtl)
         .controller('editarDocumentoCtrlPrtl', editarDocumentoCtrlPrtl)
+        .controller('visualizarAdjuntoCtrlPrtl', visualizarAdjuntoCtrlPrtl)
         .controller('ingresarDecretosCtrlPrtl', ingresarDecretosCtrlPrtl)
         .controller('verEstadoCtrlPrtl', verEstadoCtrlPrtl)
         .controller('cambiarAdjuntoCtrlPrtl', cambiarAdjuntoCtrlPrtl)
@@ -58,6 +59,20 @@
 			});
 
 			modalEditarDocumento.result.then(function (response) {
+				console.log(response);
+			}, function () {
+				console.log('Modal dismissed at: ' + new Date());
+			});
+        };
+
+        panel.visualizar_adjunto = function () {
+            var modalVisualizarAdjunto = $uibModal.open({
+				templateUrl: 'views/partials/visualizar_adjunto_tpl_prtl.html',
+				controller: 'visualizarAdjuntoCtrlPrtl as visualizar_adjunto',
+				size: 'md'
+			});
+
+			modalVisualizarAdjunto.result.then(function (response) {
 				console.log(response);
 			}, function () {
 				console.log('Modal dismissed at: ' + new Date());
@@ -157,6 +172,14 @@
         };
     }
 
+    function visualizarAdjuntoCtrlPrtl ($uibModalInstance) {
+        var visualizar_adjunto = this;
+
+        visualizar_adjunto.cerrar = function () {
+            $uibModalInstance.dismiss();
+        };
+    }
+
     function ingresarDecretosCtrlPrtl ($uibModalInstance) {
         var ingresar_decretos = this;
 
@@ -175,7 +198,7 @@
 
     function cambiarAdjuntoCtrlPrtl ($uibModalInstance, Upload, messageFct) {
         var cambiar_adjunto = this;
-        console.log(api.url);
+
         cambiar_adjunto.cerrar = function () {
             $uibModalInstance.dismiss();
         };
@@ -188,18 +211,19 @@
 
         cambiar_adjunto.cargar_adjunto = function (file) {
             Upload.upload({
-                url: api.url+'/upload',
-                data:{file:file}
+                url : api.url+'/upload',
+                data: {file : file}
             }).then(function (resp) {
                 if(resp.data.error_code === 0){
-                    messageFct.message('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                    messageFct.message('Se cambió de adjunto al documento correctamente -> '+resp.config.data.file.name);
                 } else {
-                    messageFct.message('an error occured');
+                    messageFct.message('Ocurrió un error al intentar cargar el archivo');
                 }
             }, function (resp) {
-                console.log('Error status: ' + resp.status);
+                console.log('Estado de error : ' + resp.status);
             }, function (evt) {
                 var progreso_carga = parseInt(100.0 * evt.loaded / evt.total);
+
                 cambiar_adjunto.progreso = 'Subiendo : ' + progreso_carga + '% ';
                 cambiar_adjunto.valor = progreso_carga;
             });
