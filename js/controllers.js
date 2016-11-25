@@ -199,10 +199,9 @@
             }, function (resp) {
                 console.log('Error status: ' + resp.status);
             }, function (evt) {
-                console.log(evt);
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-                cambiar_adjunto.progress = 'progress: ' + progressPercentage + '% ';
+                var progreso_carga = parseInt(100.0 * evt.loaded / evt.total);
+                cambiar_adjunto.progreso = 'Subiendo : ' + progreso_carga + '% ';
+                cambiar_adjunto.valor = progreso_carga;
             });
         };
     }
