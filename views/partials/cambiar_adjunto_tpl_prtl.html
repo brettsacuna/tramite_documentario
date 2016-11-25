@@ -9,10 +9,10 @@
                 <div class="input-group">
                     <label class="input-group-btn">
                         <span class="btn btn-primary btn-file">
-                            Seleccionar archivo <input type="file" name="adjunto" id="adjunto" ng-model="cambiar_adjunto.adjunto">
+                            Seleccionar archivo <input type="file" ngf-select accept="pdf/*" ngf-max-size="20MB" name="adjunto" id="adjunto" ng-model="cambiar_adjunto.adjunto">
                         </span>
                     </label>
-                    <input type="text" class="form-control" readonly ng-value="cambiar_adjunto.adjunto ? cambiar_adjunto.adjunto : 'No se ha seleccionado ningún archivo'">
+                    <input type="text" class="form-control" readonly ng-value="cambiar_adjunto.adjunto ? cambiar_adjunto.adjunto.name : 'No se ha seleccionado ningún archivo'">
                 </div>
                 <p class="help-block">Adjuntar archivo de sustento</p>
             </div>
@@ -21,5 +21,5 @@
 </div>
 <div class="modal-footer">
     <button class="btn btn-danger" type="button" ng-click="cambiar_adjunto.cerrar()"><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;Cerrar</button>
-    <button type="button" class="btn btn-primary" ng-click="cambiar_adjunto.guardar_documento()"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;Guardar adjunto</button>
+    <button type="button" class="btn btn-primary" ng-click="cambiar_adjunto.guardar_adjunto(cambiar_adjunto.adjunto)" ng-disabled="!cambiar_adjunto.adjunto"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;Guardar adjunto</button>
 </div>

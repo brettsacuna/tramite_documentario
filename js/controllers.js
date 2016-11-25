@@ -1,6 +1,8 @@
 (function () {
     'use-strict';
 
+    var api = require('./../config.json');
+
     angular
         .module('tramiteApp.controllers', [])
         .controller('panelCtrl', panelCtrl)
@@ -171,11 +173,37 @@
         };
     }
 
-    function cambiarAdjuntoCtrlPrtl ($uibModalInstance) {
+    function cambiarAdjuntoCtrlPrtl ($uibModalInstance, Upload, messageFct) {
         var cambiar_adjunto = this;
-
+        console.log(api.url);
         cambiar_adjunto.cerrar = function () {
             $uibModalInstance.dismiss();
+        };
+
+        cambiar_adjunto.guardar_adjunto = function(adjunto){
+            if (adjunto) {
+                cambiar_adjunto.cargar_adjunto(adjunto);
+            }
+        };
+
+        cambiar_adjunto.cargar_adjunto = function (file) {
+            Upload.upload({
+                url: api.url+'/upload',
+                data:{file:file}
+            }).then(function (resp) {
+                if(resp.data.error_code === 0){
+                    messageFct.message('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                } else {
+                    messageFct.message('an error occured');
+                }
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                console.log(evt);
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                cambiar_adjunto.progress = 'progress: ' + progressPercentage + '% ';
+            });
         };
     }
 
