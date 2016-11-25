@@ -215,7 +215,7 @@
                 data: {file : file}
             }).then(function (resp) {
                 if(resp.data.error_code === 0){
-                    messageFct.message('Se cambió de adjunto al documento correctamente -> '+resp.config.data.file.name);
+                    messageFct.message('Se cambió de adjunto al documento correctamente -> '+resp.data.filename);
                 } else {
                     messageFct.message('Ocurrió un error al intentar cargar el archivo');
                 }

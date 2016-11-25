@@ -13,6 +13,8 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
+var filename_aux;
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads/');
@@ -20,6 +22,8 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
         cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+
+        filename_aux = file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
     }
 });
 
@@ -33,7 +37,8 @@ app.post('/upload', function(req, res) {
              res.json({error_code:1,err_desc:err});
              return;
         }
-         res.json({error_code:0,err_desc:null});
+
+        res.json({error_code:0,err_desc:null,filename:filename_aux});
     });
 });
 
