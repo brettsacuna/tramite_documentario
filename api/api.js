@@ -5,7 +5,7 @@ var multer = require('multer');
 
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-    res.header("Access-Control-Allow-Origin", "http://localhost");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, __dirname+'/uploads/');
+        cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
