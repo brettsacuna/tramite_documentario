@@ -180,12 +180,22 @@
         };
     }
 
-    function ingresarDecretosCtrlPrtl ($uibModalInstance) {
+    function ingresarDecretosCtrlPrtl ($uibModalInstance, documentoFct) {
         var ingresar_decretos = this;
 
         ingresar_decretos.cerrar = function () {
             $uibModalInstance.dismiss();
         };
+
+        ingresar_decretos.obtener_secciones = function () {
+            documentoFct.getSecciones().then(function (response) {
+                console.log(response);
+            }).catch(function (reason) {
+                console.log(reason);
+            });
+        };
+
+        ingresar_decretos.obtener_secciones();
     }
 
     function verEstadoCtrlPrtl ($uibModalInstance) {
