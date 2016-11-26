@@ -10,7 +10,7 @@
 
     function documentoFct ($http, $q) {
         return {
-            getSecciones : function (clase) {
+            getSecciones : function () {
 				var defered = $q.defer();
 		        var promise = defered.promise;
 
@@ -23,7 +23,77 @@
 		            });
 
 		        return promise;
-			}
+			},
+            getDisposiciones : function () {
+				var defered = $q.defer();
+		        var promise = defered.promise;
+
+		        $http.get(api.backend+'/ServletDisposicion?opcion=list')
+		            .success(function(data) {
+		                defered.resolve(data);
+		            })
+		            .error(function(err) {
+		                defered.reject(err);
+		            });
+
+		        return promise;
+			},
+            getTipoDocumento : function () {
+				var defered = $q.defer();
+		        var promise = defered.promise;
+
+		        $http.get(api.backend+'/ServletTipo_documento?opcion=list')
+		            .success(function(data) {
+		                defered.resolve(data);
+		            })
+		            .error(function(err) {
+		                defered.reject(err);
+		            });
+
+		        return promise;
+			},
+            getUnidades : function (filtro) {
+				var defered = $q.defer();
+		        var promise = defered.promise;
+
+		        $http.get(api.backend+'/ServletUnidad?opcion=filt&filtro='+filtro)
+		            .success(function(data) {
+		                defered.resolve(data);
+		            })
+		            .error(function(err) {
+		                defered.reject(err);
+		            });
+
+		        return promise;
+			},
+            getClasificaciones : function () {
+				var defered = $q.defer();
+		        var promise = defered.promise;
+
+		        $http.get(api.backend+'/ServletClasificacion?opcion=list')
+		            .success(function(data) {
+		                defered.resolve(data);
+		            })
+		            .error(function(err) {
+		                defered.reject(err);
+		            });
+
+		        return promise;
+			},
+            saveDocumento : function (documento) {
+                var defered = $q.defer();
+		        var promise = defered.promise;
+
+		        $http.post(api.backend+'/ServletDocumento', documento)
+		            .success(function(data) {
+		                defered.resolve(data);
+		            })
+		            .error(function(err) {
+		                defered.reject(err);
+		            });
+
+		        return promise;
+            }
         };
     }
 

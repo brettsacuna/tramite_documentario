@@ -27,6 +27,29 @@ var lib = require('bower-files')({
         "main": [
           "angular-confirm.js"
         ]
+      },
+      "font-awesome" : {
+        "main": [
+          "css/font-awesome.css",
+          "sass/font-awesome.scss",
+          "less/font-awesome.less"
+        ]
+      },
+      "angular-i18n" : {
+        "main": [
+          "angular-locale_es-pe.js"
+        ]
+      },
+      "pdfjs-dist" : {
+        "main": [
+          "build/pdf.js",
+          "build/pdf.worker.js",
+        ]
+      },
+      "angular-pdf" : {
+        "main": [
+          "dist/angular-pdf.js"
+        ]
       }
   }
 });
@@ -77,8 +100,13 @@ gulp.task('concatJS', function(){
   .pipe(gulp.dest('./tmp'));
 });
 
-gulp.task('fonts', function () {
+gulp.task('fonts_bootstrap', function () {
   return gulp.src('./bower_components/bootstrap/fonts/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest('build/fonts/'));
+});
+
+gulp.task('fonts_awesome', function () {
+  return gulp.src('./bower_components/font-awesome/fonts/**/*.{eot,svg,ttf,woff,woff2}')
     .pipe(gulp.dest('build/fonts/'));
 });
 
@@ -99,7 +127,7 @@ gulp.task('clean', function(){
   return del(['build', 'tmp']);
 });
 
-gulp.task('build', ['clean', 'fonts'], function(){
+gulp.task('build', ['clean', 'fonts_bootstrap', 'fonts_awesome'], function(){
   if (buildProduction){
     gulp.start('minifyScripts');
   }else{
